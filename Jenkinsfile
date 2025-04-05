@@ -65,7 +65,7 @@ pipeline {
         stage('Update Deployment') {
             steps {
                 container('jenkins-agent') {
-                    updateManifest('dev', 'Realm-Deployment', 'base/kustomization.yaml', env.IMAGE_NAME, env.GIT_COMMIT.take(7), 'paperFleet.tag')
+                    updateManifest('dev', 'Realm-Deployment', 'values.yaml', env.IMAGE_NAME, env.GIT_COMMIT.take(7), 'paperFleet.tag')
                 }
             }
         }
