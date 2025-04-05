@@ -42,14 +42,17 @@ pipeline {
                 container('jenkins-agent') {
                     script {
                         def manifest = readYaml file: 'plugin-manifest.yaml'
-                        manifest.artifacts.each { artifact ->
-                            def parts = artifact.name.tokenize('/')
+                        manifest.artifacts.each { key, data ->
+                            def image = data.image
+                            def tag = data.tag
+
+                            def parts = image.tokenize('/')
                             def registry = parts[0]
                             def registryProject = parts[1]
                             def artifactName = parts[2]
 
-                            echo "Pulling ${artifactName} from ${registry}/${registryProject} with tag ${artifact.newTag}"
-                            orasPull(artifactName, artifact.newTag, 'server/plugins', registry, registryProject)
+                            echo "Pulling ${artifactName} from ${registry}/${registryProject} with tag ${tag}"
+                            orasPull(artifactName, tag, 'server/plugins', registry, registryProject)
                         }
                     }
                 }
