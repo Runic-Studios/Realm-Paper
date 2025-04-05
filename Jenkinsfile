@@ -49,7 +49,7 @@ pipeline {
                             def artifactName = parts[2]
 
                             echo "Pulling ${artifactName} from ${registry}/${registryProject} with tag ${artifact.newTag}"
-                            orasPull(artifactName, artifact.newTag, 'plugins', registry, registryProject)
+                            orasPull(artifactName, artifact.newTag, 'server/plugins', registry, registryProject)
                         }
                     }
                 }
