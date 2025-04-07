@@ -1,4 +1,4 @@
 artifacts:
   velagones:
     image: registry.runicrealms.com/library/velagones-paper
-    tag: 397369c
+    tag: 006581e
