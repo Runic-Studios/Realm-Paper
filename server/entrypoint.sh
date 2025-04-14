@@ -8,7 +8,7 @@ inflate() {
 
   mkdir -p "$dest"
 
-  find "$src" -maxdepth 1 -type f | while read -r file; do
+  find "$src" -type f | while read -r file; do
     base=$(basename "$file")
     path=$(echo "$base" | sed 's/__/\//g')
     mkdir -p "$dest/$(dirname "$path")"
