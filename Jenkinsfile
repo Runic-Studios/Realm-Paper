@@ -3,7 +3,7 @@
 pipeline {
     agent {
         kubernetes {
-            yaml jenkinsAgent(['agent-base': 'registry.runicrealms.com:/jenkins/agent-base'])
+            yaml jenkinsAgent(['agent-base': 'registry.runicrealms.com/jenkins/agent-base:latest'])
         }
     }
 
