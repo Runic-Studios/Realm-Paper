@@ -37,31 +37,25 @@ pipeline {
                 }
             }
         }
-        stage('Pull Plugin Artifacts') {
+        stage('Pull External Artifacts') {
             steps {
                 container('agent-base') {
                     script {
-                        def manifest = readYaml file: 'plugin-manifest.yaml'
+                        def manifest = readYaml file: 'artifact-manifest.yaml'
                         manifest.artifacts.each { key, data ->
                             def image = data.image
                             def tag = data.tag
+                            def path = data.path
 
                             def parts = image.tokenize('/')
                             def registry = parts[0]
                             def registryProject = parts[1]
                             def artifactName = parts[2]
 
-                            echo "Pulling ${artifactName} from ${registry}/${registryProject} with tag ${tag}"
-                            orasPull(artifactName, tag, 'server/plugins', registry, registryProject)
+                            echo "Pulling ${artifactName} from ${registry}/${registryProject} with tag ${tag} to ${path}"
+                            orasPull(artifactName, tag, path, registry, registryProject)
                         }
                     }
-                }
-            }
-        }
-        stage('Pull Palimpsest Artifact') {
-            steps {
-                container('agent-base') {
-                    orasPull('palimpsest', 'latest', 'server', env.REGISTRY, 'library')
                 }
             }
         }
