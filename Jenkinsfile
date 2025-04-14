@@ -3,7 +3,7 @@
 pipeline {
     agent {
         kubernetes {
-            yaml jenkinsAgent("registry.runicrealms.com")
+            yaml jenkinsAgent(['agent-base': 'registry.runicrealms.com:/jenkins/agent-base'])
         }
     }
 
@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Pull Plugin Artifacts') {
             steps {
-                container('jenkins-agent') {
+                container('agent-base') {
                     script {
                         def manifest = readYaml file: 'plugin-manifest.yaml'
                         manifest.artifacts.each { key, data ->
@@ -60,14 +60,14 @@ pipeline {
         }
         stage('Build and Push Docker Image') {
             steps {
-                container('jenkins-agent') {
+                container('agent-base') {
                     dockerBuildPush("Dockerfile", env.IMAGE_NAME, env.GIT_COMMIT.take(7), env.REGISTRY, env.REGISTRY_PROJECT)
                 }
             }
         }
         stage('Update Deployment') {
             steps {
-                container('jenkins-agent') {
+                container('agent-base') {
                     updateManifest('dev', 'Realm-Deployment', 'values.yaml', env.IMAGE_NAME, env.GIT_COMMIT.take(7), 'paperFleet.tag')
                 }
             }
@@ -77,7 +77,7 @@ pipeline {
                 expression { return env.RUN_MAIN_DEPLOY == 'true' }
             }
             steps {
-                container('jenkins-agent') {
+                container('agent-base') {
                     createPR('Realm-Paper', 'Realm-Deployment', 'dev', 'main')
                 }
             }
