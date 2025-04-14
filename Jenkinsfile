@@ -58,6 +58,13 @@ pipeline {
                 }
             }
         }
+        stage('Pull Palimpsest Artifact') {
+            steps {
+                container('agent-base') {
+                    orasPull('palimpsest', 'latest', 'server', env.REGISTRY, 'library')
+                }
+            }
+        }
         stage('Build and Push Docker Image') {
             steps {
                 container('agent-base') {
