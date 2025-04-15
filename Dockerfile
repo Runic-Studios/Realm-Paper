@@ -1,5 +1,10 @@
 FROM amazoncorretto:21-alpine
 
+# Needed by entrypoint
+RUN apk add --nocache curl \
+  && curl -Lo /usr/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 \
+  && chmod +x /usr/bin/yq
+
 WORKDIR /opt/paper
 
 COPY server/ /opt/paper
