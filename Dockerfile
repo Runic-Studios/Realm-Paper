@@ -12,7 +12,7 @@ COPY server/ /opt/paper
 RUN chmod +x /opt/paper/palimpsest &&  \
     chmod +x /opt/paper/entrypoint.sh
 
-RUN for file in /opt/paper/*.zip; do unzip "$file" -d /opt/paper/; done
+RUN for file in /opt/paper/*.zip; do unzip -q "$file" -d /opt/paper/; done
 
 EXPOSE 25565
 
