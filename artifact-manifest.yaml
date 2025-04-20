@@ -11,3 +11,7 @@ artifacts:
     image: registry.runicrealms.com/library/palimpsest
     tag: latest
     path: server
+  game:
+    image: registry.runicrealms.com/library/game
+    tag: manual2
+    path: server/plugins
