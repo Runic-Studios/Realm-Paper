@@ -14,7 +14,7 @@ RUN chmod +x /opt/paper/palimpsest &&  \
 
 # Do this twice to unzip nested zips (worlds)
 RUN for file in /opt/paper/*.zip; do unzip -q "$file" -d /opt/paper/ && rm "$file"; done
-RUN for file in /opt/paper/*.zip; do unzip -q "$file" -d /opt/paper/ && rm "$file"; done
+#RUN for file in /opt/paper/*.zip; do unzip -q "$file" -d /opt/paper/ && rm "$file"; done
 
 EXPOSE 25565
 

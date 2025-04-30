@@ -3,6 +3,10 @@ artifacts:
     image: registry.runicrealms.com/library/realm-paper-base
     tag: latest
     path: server
+  rr-worlds:
+    image: registry.runicrealms.com/world/rr-worlds
+    tag: latest
+    path: server
   velagones:
     image: registry.runicrealms.com/library/velagones-paper
     tag: eb4aa2e
