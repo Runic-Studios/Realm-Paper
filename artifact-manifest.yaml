@@ -9,13 +9,13 @@ artifacts:
     path: server
   velagones:
     image: registry.runicrealms.com/library/velagones-paper
-    tag: 816fad4
+    tag: eb4aa2e
     path: server/plugins
   palimpsest:
     image: registry.runicrealms.com/library/palimpsest
     tag: latest
     path: server
-  game:
+  rr-game:
     image: registry.runicrealms.com/library/rr-game
-    tag: latest
+    tag: 816fad4
     path: server/plugins
