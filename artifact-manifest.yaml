@@ -16,6 +16,6 @@ artifacts:
     tag: latest
     path: server
   game:
-    image: registry.runicrealms.com/library/game
-    tag: manual2
+    image: registry.runicrealms.com/library/rr-game
+    tag: latest
     path: server/plugins
