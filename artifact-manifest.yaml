@@ -17,5 +17,5 @@ artifacts:
     path: server
   rr-game:
     image: registry.runicrealms.com/library/rr-game
-    tag: "0f750e9"
+    tag: "0fedaff"
     path: server/plugins
