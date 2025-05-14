@@ -37,9 +37,9 @@ exec java -Xms4096M -Xmx4096M -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+Pa
 -Daikars.new.flags=true \
 -XX:+UnlockDiagnosticVMOptions -XX:+ShowMessageBoxOnError -XX:+CreateCoredumpOnCrash -XX:ErrorFile=/data/hs_err_pid%p.log \
 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data \
--jar paper.jar nogui #&
+-jar paper.jar nogui &
 
-#pid=$!
+pid=$!
 # Trap the SIGTERM signal and forward it to the main process (15 = SIGTERM)
-#trap 'kill -15 $pid; wait $pid' SIGTERM
-#wait $pid
+trap 'kill -15 $pid; wait $pid' SIGTERM
+wait $pid
