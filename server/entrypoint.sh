@@ -59,7 +59,7 @@ JVM_OPTS="
 -XX:HeapDumpPath=/data
 "
 
-if [ "${DEBUG_ENABLED:-0}" = "1" ]; then
+if [ "${DEBUGGER_ENABLED:-0}" = "1" ]; then
   JVM_OPTS="$JVM_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
 fi
 
