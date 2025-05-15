@@ -4,7 +4,7 @@ artifacts:
     tag: latest
     path: server
   alterra-slime:
-    image: registry.runicrealms.com/world/Alterra-slime
+    image: registry.runicrealms.com/world/alterra-slime
     tag: latest
     path: server/slime_worlds
   dungeons-slime:
