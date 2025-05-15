@@ -63,7 +63,7 @@ if [ "${DEBUGGER_ENABLED:-0}" = "1" ]; then
   JVM_OPTS="$JVM_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
 fi
 
-exec java $JVM_OPTS -jar paper.jar nogui &
+exec java $JVM_OPTS -jar $(ls *paper*.jar | head -n 1) nogui &
 pid=$!
 # Trap the SIGTERM signal and forward it to the main process (15 = SIGTERM)
 trap 'kill -15 $pid; wait $pid' SIGTERM
