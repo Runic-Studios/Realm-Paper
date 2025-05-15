@@ -30,7 +30,7 @@ yq e '.proxies.velocity.secret = strenv(FWD_SECRET)' config/paper-global.yml -i
 
 
 JVM_OPTS="
--Xms3400M -Xmx3400M
+-Xms${JVM_MEMORY}M -Xmx${JVM_MEMORY}M
 -XX:+AlwaysPreTouch
 -XX:+DisableExplicitGC
 -XX:+ParallelRefProcEnabled
