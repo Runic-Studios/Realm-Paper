@@ -3,10 +3,6 @@ artifacts:
     image: registry.runicrealms.com/library/realm-paper-base
     tag: latest
     path: server
-  dungeons-slime:
-    image: registry.runicrealms.com/world/dungeons-slime
-    tag: latest
-    path: server/slime_worlds
   velagones:
     image: registry.runicrealms.com/library/velagones-paper
     tag: 24fb1bb
