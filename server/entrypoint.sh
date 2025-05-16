@@ -4,7 +4,7 @@ set -euxo pipefail
 
 # Copy worlds
 echo "Unzipping worlds..."
-unzip /mnt/world/worlds.zip -d /opt/paper
+unzip -q /mnt/world/worlds.zip -d /opt/paper
 
 echo "Stacking configs..."
 
