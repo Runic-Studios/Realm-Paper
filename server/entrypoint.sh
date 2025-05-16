@@ -2,6 +2,12 @@
 
 set -euxo pipefail
 
+# Copy worlds
+echo "Unzipping worlds..."
+unzip /mnt/world/worlds.zip -d /opt/paper
+
+echo "Stacking configs..."
+
 inflate() {
   src=$1
   dest=$2
@@ -24,11 +30,13 @@ inflate /overlays/env /inflated/env
 ./palimpsest -o /opt/paper -o /inflated/base -o /inflated/env -t /opt/paper
 
 # Inject the velocity forwarding secret
+echo "Injecting velocity secret..."
 IFS= read -r FWD_SECRET < forwarding.secret
 export FWD_SECRET=$FWD_SECRET
 yq e '.proxies.velocity.secret = strenv(FWD_SECRET)' config/paper-global.yml -i
 
 
+echo "Creating JVM flags..."
 JVM_OPTS="
 -Xms${JVM_MEMORY}M -Xmx${JVM_MEMORY}M
 -XX:+AlwaysPreTouch
