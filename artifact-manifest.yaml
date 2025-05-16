@@ -3,10 +3,6 @@ artifacts:
     image: registry.runicrealms.com/library/realm-paper-base
     tag: latest
     path: server
-  alterra-slime:
-    image: registry.runicrealms.com/world/alterra-slime
-    tag: latest
-    path: server/slime_worlds
   dungeons-slime:
     image: registry.runicrealms.com/world/dungeons-slime
     tag: latest
