@@ -17,5 +17,5 @@ artifacts:
     path: server/plugins
   rr-writer:
     image: registry.runicrealms.com/library/rr-writer
-    tag: "b19be3f"
+    tag: "0e38b09"
     path: server/plugins/Game
