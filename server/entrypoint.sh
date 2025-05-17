@@ -6,6 +6,9 @@ set -euxo pipefail
 echo "Unzipping worlds..."
 unzip -q /mnt/world/worlds.zip -d /opt/paper
 
+echo "Unzipping writer..."
+unzip -q /opt/paper/plugins/Game/*.zip
+
 echo "Stacking configs..."
 
 inflate() {

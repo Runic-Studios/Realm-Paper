@@ -15,3 +15,7 @@ artifacts:
     image: registry.runicrealms.com/library/rr-game
     tag: "0419d97"
     path: server/plugins
+  rr-writer:
+    image: registry.runicrealms.com/library/rr-writer
+    tag: "latest"
+    path: server/plugins/Game
