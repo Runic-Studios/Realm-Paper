@@ -7,7 +7,8 @@ echo "Unzipping worlds..."
 unzip -q /mnt/world/worlds.zip -d /opt/paper
 
 echo "Unzipping writer..."
-unzip -q /opt/paper/plugins/Game/*.zip
+unzip -q /opt/paper/plugins/Game/*.zip -d /opt/paper/plugins/Game
+rm /opt/paper/plugins/Game/*.zip
 
 echo "Stacking configs..."
 
