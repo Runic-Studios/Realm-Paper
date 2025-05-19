@@ -3,7 +3,7 @@
 set -euxo pipefail
 
 echo "Copying Realm-Paper-Base..."
-cp -rn /mnt/realm-paper-base/server/. /opt/paper/
+cp -rT /mnt/realm-paper-base/server /opt/paper/
 
 # Copy worlds
 echo "Unzipping worlds..."
