@@ -2,6 +2,9 @@
 
 set -euxo pipefail
 
+echo "Copying Realm-Paper-Base..."
+cp -rn /mnt/realm-paper-base/server/. /opt/paper/
+
 # Copy worlds
 echo "Unzipping worlds..."
 unzip -q /mnt/world/worlds.zip -d /opt/paper

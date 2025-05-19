@@ -1,8 +1,4 @@
 artifacts:
-  realm-paper-base:
-    image: registry.runicrealms.com/library/realm-paper-base
-    tag: latest
-    path: server
   velagones:
     image: registry.runicrealms.com/library/velagones-paper
     tag: 24fb1bb
