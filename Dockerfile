@@ -15,7 +15,7 @@ WORKDIR /opt
 RUN curl -fsSL "${JBR_URL}" -o /tmp/${JBR_TAR} && \
     tar -xzf /tmp/${JBR_TAR} -C /opt && \
     ln -s /opt/jbr-* /opt/jbr && \
-    rm /tmp/${JBR_TAR]
+    rm /tmp/${JBR_TAR}
 
 ENV JAVA_HOME=/opt/jbr
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
