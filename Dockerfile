@@ -6,15 +6,15 @@ RUN apk add --no-cache curl unzip \
   && chmod +x /usr/bin/yq
 
 # JBR
-ENV JBR_VERSION=jbrsdk-21.0.7-linux-musl-x64-b992.24
-ENV JBR_URL=https://cache-redirector.jetbrains.com/intellij-jbr/${JBR_VERSION}.tar.gz
+ENV JBR_TAG=jbrsdk-21.0.7-linux-musl-x64-b992.24
+ENV JBR_URL=https://cache-redirector.jetbrains.com/intellij-jbr/${JBR_TAG}.tar.gz
 
 WORKDIR /opt
 
-RUN curl -fsSL "${JBR_URL}" -o /tmp/${JBR_TAR} && \
-    tar -xzf /tmp/${JBR_TAR} -C /opt && \
+RUN curl -fsSL "${JBR_URL}" -o /tmp/${JBR_TAG} && \
+    tar -xzf /tmp/${JBR_TAG} -C /opt && \
     ln -s /opt/jbr-* /opt/jbr && \
-    rm /tmp/${JBR_TAR}
+    rm /tmp/${JBR_TAG}
 
 ENV JAVA_HOME=/opt/jbr
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
