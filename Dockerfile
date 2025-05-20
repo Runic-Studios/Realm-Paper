@@ -6,9 +6,8 @@ RUN apk add --no-cache curl unzip \
   && chmod +x /usr/bin/yq
 
 # JBR
-ENV JBR_VERSION=21.0.7-b992.24
-ENV JBR_TAR=jbr-${JBR_VERSION}-linux-musl-x64.tar.gz
-ENV JBR_URL=https://cache-redirector.jetbrains.com/intellij-jbr/${JBR_TAR}
+ENV JBR_VERSION=jbrsdk-21.0.7-linux-musl-x64-b992.24
+ENV JBR_URL=https://cache-redirector.jetbrains.com/intellij-jbr/${JBR_VERSION}.tar.gz
 
 WORKDIR /opt
 
