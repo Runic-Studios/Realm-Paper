@@ -21,10 +21,10 @@ ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 # HotSwap
 ENV HOTSWAP_AGENT_VERSION=2.0.1
-RUN mkdir -p ${JAVA_HOME}/lib/hotswap && \
-    curl -fsSL -o ${JAVA_HOME}/lib/hotswap/hotswap-agent.jar \
+RUN HOTSWAP_DIR=$(readlink -f /opt/jbr)/lib/hotswap && \
+    mkdir -p "$HOTSWAP_DIR" && \
+    curl -fsSL -o "$HOTSWAP_DIR/hotswap-agent.jar" \
     https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-${HOTSWAP_AGENT_VERSION}/hotswap-agent-${HOTSWAP_AGENT_VERSION}.jar
-
 
 # Copy Application
 WORKDIR /opt/paper
