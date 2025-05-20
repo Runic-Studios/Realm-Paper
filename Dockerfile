@@ -11,10 +11,10 @@ ENV JBR_URL=https://cache-redirector.jetbrains.com/intellij-jbr/${JBR_TAG}.tar.g
 
 WORKDIR /opt
 
-RUN curl -fsSL "${JBR_URL}" -o /tmp/${JBR_TAG} && \
-    tar -xzf /tmp/${JBR_TAG} -C /opt && \
-    ln -s /opt/jbr-* /opt/jbr && \
-    rm /tmp/${JBR_TAG}
+RUN curl -fSL "$JBR_URL" -o "/tmp/${JBR_TAG}.tar.gz" && \
+    tar -xzf "/tmp/${JBR_TAG}.tar.gz" -C /opt && \
+    ln -s "/opt/${JBR_TAG}" /opt/jbr && \
+    rm "/tmp/${JBR_TAG}.tar.gz"
 
 ENV JAVA_HOME=/opt/jbr
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
