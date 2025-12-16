@@ -16,4 +16,4 @@ artifacts:
     tag: "c8c10c1"
     path: server/plugins/Game
   velagones-paper:
-    tag: 0f14832
+    tag: f9b31b6
