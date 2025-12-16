@@ -15,5 +15,3 @@ artifacts:
     image: registry.runicrealms.com/library/rr-writer
     tag: "c8c10c1"
     path: server/plugins/Game
-  velagones-paper:
-    tag: f9b31b6
