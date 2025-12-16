@@ -34,7 +34,7 @@ inflate /overlays/base /inflated/base
 inflate /overlays/env /inflated/env
 
 # Inject the configuration files from config volume into paper
-./palimpsest -o /opt/paper -o /inflated/base -o /inflated/env -t /opt/paper
+./palimpsest -verbose -o /opt/paper -o /inflated/base -o /inflated/env -t /opt/paper
 
 # Inject the velocity forwarding secret
 echo "Injecting velocity secret..."
