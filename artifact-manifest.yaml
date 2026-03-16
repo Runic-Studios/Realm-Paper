@@ -5,7 +5,7 @@ artifacts:
     path: server/plugins
   palimpsest:
     image: registry.runicrealms.com/library/palimpsest
-    tag: d995204
+    tag: d901a03
     path: server
   rr-game:
     image: registry.runicrealms.com/library/rr-game
