@@ -1,0 +1,17 @@
+artifacts:
+  velagones:
+    image: registry.runicrealms.com/library/velagones-paper
+    tag: "7ae28e7"
+    path: server/plugins
+  palimpsest:
+    image: registry.runicrealms.com/library/palimpsest
+    tag: "9478cf2"
+    path: server
+  rr-game:
+    image: registry.runicrealms.com/library/rr-game
+    tag: "858d6ca"
+    path: server/plugins
+  rr-writer:
+    image: registry.runicrealms.com/library/rr-writer
+    tag: "39288d2"
+    path: server/plugins/Game
