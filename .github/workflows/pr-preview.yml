@@ -1,0 +1,57 @@
+name: Build PR Preview Image
+
+on:
+  repository_dispatch:
+    types: [build-pr-preview]
+
+env:
+  IMAGE_NAME: 'realm-paper'
+  REGISTRY: 'registry.runicrealms.com'
+  REGISTRY_PROJECT: 'build'
+
+jobs:
+  build-preview:
+    runs-on: rr-runner
+    container:
+      image: registry.runicrealms.com/agents/agent-base:latest
+      credentials:
+        username: ${{ secrets.HARBOR_USERNAME }}
+        password: ${{ secrets.HARBOR_PASSWORD }}
+    steps:
+      - name: Checkout Realm-Paper (dev branch)
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Override rr-game tag in artifact manifest
+        run: |
+          yq eval -i \
+            '.artifacts["rr-game"].tag = "${{ github.event.client_payload.rr_game_tag }}"' \
+            artifact-manifest.yaml
+
+      - name: Pull External Artifacts
+        uses: Runic-Studios/Realm-Actions/process-artifact-manifest@main
+        with:
+          manifest_file: 'artifact-manifest.yaml'
+          registry_username: ${{ secrets.HARBOR_USERNAME }}
+          registry_password: ${{ secrets.HARBOR_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        uses: Runic-Studios/Realm-Actions/docker-build-push@main
+        with:
+          dockerfile: 'Dockerfile'
+          image_name: ${{ env.IMAGE_NAME }}
+          tag: pr-${{ github.event.client_payload.pr_number }}
+          registry: ${{ env.REGISTRY }}
+          registry_project: ${{ env.REGISTRY_PROJECT }}
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
+          context: '.'
+
+      - name: Trigger ArgoCD force-sync for PR preview
+        uses: Runic-Studios/Realm-Actions/trigger-argocd@main
+        with:
+          argocd_server: 'https://argocd.runicrealms.com'
+          argocd_app: rr-game-preview-${{ github.event.client_payload.pr_number }}
+          argocd_token: ${{ secrets.ARGOCD_TOKEN }}
+          force: 'true'
