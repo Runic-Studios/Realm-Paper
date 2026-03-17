@@ -52,7 +52,7 @@ jobs:
         with:
           repository: 'Realm-Deployment'
           branch: 'dev'
-          file_path: 'values.yaml'
+          file_path: 'helm/full/values.yaml'
           yq_path: '.paperFleet.tag'
           new_value: ${{ steps.vars.outputs.sha_short }}
           ssh_key: ${{ secrets.BOT_SSH_KEY }}
