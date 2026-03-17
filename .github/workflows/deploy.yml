@@ -59,6 +59,9 @@ jobs:
           commit_message: 'Update ${{ env.IMAGE_NAME }} tag to ${{ steps.vars.outputs.sha_short }}'
 
 
+      - name: Wait for manifest update to propagate
+        run: sleep 5
+
       - name: Trigger Argo CD sync (dev)
         uses: Runic-Studios/Realm-Actions/trigger-argocd@main
         with:
