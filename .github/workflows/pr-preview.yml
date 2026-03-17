@@ -41,7 +41,7 @@ jobs:
         with:
           dockerfile: 'Dockerfile'
           image_name: ${{ env.IMAGE_NAME }}
-          tag: pr-${{ github.event.client_payload.pr_number }}
+          tag: pr-${{ github.event.client_payload.pr_number }}-${{ github.event.client_payload.sha7 }}
           registry: ${{ env.REGISTRY }}
           registry_project: ${{ env.REGISTRY_PROJECT }}
           username: ${{ secrets.HARBOR_USERNAME }}
