@@ -58,6 +58,22 @@ jobs:
           ssh_key: ${{ secrets.BOT_SSH_KEY }}
           commit_message: 'Update ${{ env.IMAGE_NAME }} tag to ${{ steps.vars.outputs.sha_short }}'
 
+
+      - name: Trigger Argo CD sync (dev)
+        uses: Runic-Studios/Realm-Actions/trigger-argocd@main
+        with:
+          argocd_server: 'https://argocd.runicrealms.com'
+          argocd_app: 'realm-dev'
+          argocd_token: ${{ secrets.ARGOCD_TOKEN }}
+
+      - name: Trigger Argo CD sync (prod)
+        if: github.ref == 'refs/heads/main'
+        uses: Runic-Studios/Realm-Actions/trigger-argocd@main
+        with:
+          argocd_server: 'https://argocd.runicrealms.com'
+          argocd_app: 'realm'
+          argocd_token: ${{ secrets.ARGOCD_TOKEN }}
+      
       - name: Create PR (Main Only)
         if: github.ref == 'refs/heads/main'
         uses: Runic-Studios/Realm-Actions/create-pr@main
