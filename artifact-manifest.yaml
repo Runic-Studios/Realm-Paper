@@ -14,4 +14,4 @@ artifacts:
   rr-writer:
     image: registry.runicrealms.com/library/rr-writer
     tag: "adba268"
-    path: server/plugins/Game
+    path: server
