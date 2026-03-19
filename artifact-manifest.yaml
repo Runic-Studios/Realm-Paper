@@ -1,7 +1,7 @@
 artifacts:
   velagones:
     image: registry.runicrealms.com/library/velagones-paper
-    tag: "cc1ee0e"
+    tag: "3edbf91"
     path: server/plugins
   palimpsest:
     image: registry.runicrealms.com/library/palimpsest
