@@ -79,8 +79,11 @@ if [ "${DEBUGGER_ENABLED:-0}" = "1" ]; then
   JVM_OPTS="$JVM_OPTS -XX:+AllowEnhancedClassRedefinition -XX:HotswapAgent=core -Xlog:redefine+class*=info"
 fi
 
-exec java $JVM_OPTS -jar $(ls *paper*.jar | head -n 1) nogui &
-pid=$!
+exec java $JVM_OPTS -jar $(ls *paper*.jar | head -n 1) nogui
+
+
+# exec java $JVM_OPTS -jar $(ls *paper*.jar | head -n 1) nogui &
+# pid=$!
 # Trap the SIGTERM signal and forward it to the main process (15 = SIGTERM)
-trap 'kill -15 $pid; wait $pid' SIGTERM
-wait $pid
+# trap 'kill -15 $pid; wait $pid' SIGTERM
+# wait $pid
