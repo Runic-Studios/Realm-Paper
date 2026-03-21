@@ -10,8 +10,8 @@ echo "Unzipping worlds..."
 unzip -q /mnt/world/worlds.zip -d /opt/paper
 
 echo "Unzipping writer..."
-unzip -q /opt/paper/plugins/Game/*.zip -d /opt/paper/plugins/Game
-rm /opt/paper/plugins/Game/*.zip
+unzip -q /opt/paper/rr-writer.zip -d /opt/paper
+rm /opt/paper/rr-writer.zip
 
 echo "Stacking configs..."
 
@@ -34,7 +34,7 @@ inflate /overlays/base /inflated/base
 inflate /overlays/env /inflated/env
 
 # Inject the configuration files from config volume into paper
-./palimpsest -verbose -o /opt/paper -o /inflated/base -o /inflated/env -t /opt/paper
+./palimpsest -o /opt/paper -o /inflated/base -o /inflated/env -t /opt/paper
 
 # Inject the velocity forwarding secret
 echo "Injecting velocity secret..."
@@ -79,8 +79,11 @@ if [ "${DEBUGGER_ENABLED:-0}" = "1" ]; then
   JVM_OPTS="$JVM_OPTS -XX:+AllowEnhancedClassRedefinition -XX:HotswapAgent=core -Xlog:redefine+class*=info"
 fi
 
-exec java $JVM_OPTS -jar $(ls *paper*.jar | head -n 1) nogui &
-pid=$!
+exec java $JVM_OPTS -jar $(ls *paper*.jar | head -n 1) nogui
+
+
+# exec java $JVM_OPTS -jar $(ls *paper*.jar | head -n 1) nogui &
+# pid=$!
 # Trap the SIGTERM signal and forward it to the main process (15 = SIGTERM)
-trap 'kill -15 $pid; wait $pid' SIGTERM
-wait $pid
+# trap 'kill -15 $pid; wait $pid' SIGTERM
+# wait $pid
