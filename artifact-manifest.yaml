@@ -9,7 +9,7 @@ artifacts:
     path: server
   rr-game:
     image: registry.runicrealms.com/library/rr-game
-    tag: "bef26f6"
+    tag: "a88150e"
     path: server/plugins
   rr-writer:
     image: registry.runicrealms.com/library/rr-writer
