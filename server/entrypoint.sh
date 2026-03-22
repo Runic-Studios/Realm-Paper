@@ -45,7 +45,9 @@ yq e '.proxies.velocity.secret = strenv(FWD_SECRET)' config/paper-global.yml -i
 
 echo "Creating JVM flags..."
 JVM_OPTS="
--Xms${JVM_MEMORY}M -Xmx${JVM_MEMORY}M
+-XX:+UseContainerSupport
+-XX:MaxRAMPercentage=70
+-XX:InitialRAMPercentage=50
 -XX:+AlwaysPreTouch
 -XX:+DisableExplicitGC
 -XX:+ParallelRefProcEnabled
